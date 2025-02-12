@@ -1,56 +1,60 @@
-# Custom Database Template for the MiSTer Downloader
+# MiSTer Organize
+Welcome to my project called MiSTer Organize. I'm providing you a custom MiSTer_Console DAT each month. The goal of this project is to make MiSTer as easy to use as possible. Is your MiSTer SD or external drive a disorganized mess with files all over the place? Can't find the game you're looking for to play? The MiSTer_Console DAT contains A-Z folders to sort your games alphabetically for easy use. Put an end to the nightmare of messy file structures and games not working. Try MiSTer Organize and notice the improved difference in your MiSTer setup.
 
-By following these instructions, you'll create your own [Custom Database for the MiSTer Downloader](https://github.com/MiSTer-devel/Downloader_MiSTer/blob/main/docs/custom-databases.md). This database can be integrated in MiSTer FPGA by just editing the `downloader.ini` file at the root of the SD.
+This project uses RomVault to manage your ROMs. If you have no experience with RomVault, I have provided a basic RomVault setup for you to use. The project sources are in a Notepad text document with the most recent date at top. You can view all the folders and files for the project in the provided snapshot HTML file. It also has a built-in search functionality. This is nice to have if you are on the go and want to browse your game collection.
 
-Once your database is up, adding files to it is very simple. You'll only have to upload files to your repository on GitHub, and after that, your users will fetch these files directly in their devices, by just running *downloader* or *update_all*.
+# What is a DAT?
+Short for "data files", they're called DATs or DAT files because they usually have the extension .dat. They contain a catalog of titles and attributes for each of its titles, including file names, hashes, and sizes.
 
-## How to generate your own Custom Database for the MiSTer Downloader:
-1. Make sure you are logged in into your GitHub account. Or register a new account if you don't have any yet.
-2. Then click on
-    <a style="margin-top:100px;" href="https://github.com/theypsilon/DB-Template_MiSTer/generate">
-        <img src="https://img.shields.io/badge/Use_this_template-2ea44f" 
-            alt="Use this template"
-            title="Create repository from this template"></a>
-button to create your own public Custom Database repository on GitHub.
-3. After less than 5 minutes, you're database file will be generated at `https://raw.githubusercontent.com/<YOUR GITHUB USER>/<YOUR GITHUB REPOSITORY>/db/db.json.zip` (replacing the <> fields accordingly) and will be ready to be used. For example, if your GitHub user is `jose` and your repository name is `game_wallpapers`, the url will be: `https://raw.githubusercontent.com/jose/game_wallpapers/db/db.json.zip`
-4. To integrate it in a MiSTer device, add the following section to the end of to the file `downloader.ini` that should be placed at the root of the SD (if it doesn't exist, you may create it for this purpose):
-```ini
-[<YOUR GITHUB USER>/<YOUR GITHUB REPOSITORY>]
-db_url = https://raw.githubusercontent.com/<YOUR GITHUB USER>/<YOUR GITHUB REPOSITORY>/db/db.json.zip
-```
-5. After that, run *downloader* or *update_all* as usual. It will try to fetch the files from your newly created database. If your database is still empty -which is your case if you followed these instructions-, obviously it won't download any file yet, but it will show up in the logs. For adding files to the database check the next section.
+Used in combination with a ROM manager, the information in a DAT file can be used to audit files on your hard drive to ensure that they are named correctly, and that they match the recorded attributes in the file.
 
-## How to add files to your already working Custom Database:
+DAT files usually follow one of two standards: either a variant on the XML-based LogiqX format, or the less commonly used CLRMAMEPro format. There are many more less common formats.
 
-Once you have your database up and running (check previous section to figure out how to set it up), adding files is very straightforward.
+# What is RomVault?
+RomVault is a tool for ROM management. It works with DAT files to sort the ROMs into folders. The DAT I provide is telling the files where they need to go. Let’s take the example of the Shinobi Neo Geo game. When you click Fix ROMs, Shinobi Neo Geo will go into the Neo Geo Core folder and then into the Unlicensed games folder. This all happens because that is the file destination I have set in the DAT file.
 
-Just upload any file to your repository by using GitHub UI (Add File > Upload files), or via git. Once the files show up in your repository, they'll also be added to your database automatically. You may see the *Actions* tab in your repository to see how the automation did its magic if you are curious. **NEW:** If you want to add files without uploading them to the repository, you may use the [external_files.csv](external_files.csv) file for that.
+# RomVault Releases
+https://www.romvault.com/
 
-A couple of things to consider when uploading files:
+# RomVault Windows Setup
+https://wiki.romvault.com/doku.php?id=install_and_setup
 
-- When a user fetches the files via *downloader* or *update_all*, the downloaded file structure will mirror 1:1 the file structure you have in your repository at GitHub. This means, if you have a folder `_Cores/` containing some files in your repository, an identical `_Cores` folder will show up in MiSTer containing the exact same files.
+# RomVault Linux Setup
+https://wiki.romvault.com/doku.php?id=linux_setup
 
-- The files `README.md`, `LICENSE`, and the `.github` folder won't be included in your database. Just ignore them, they won't be installed in the devices. The file `external_files.csv` won't show up on your device either, but the files listed inside it will.
+# RomVault Side Buttons
+https://wiki.romvault.com/doku.php?id=side_buttons
 
-- You may upload as many files as you want as long as they don't violate GitHub constraints (100mb is max size per file).
+# Show Your Support
+Loving this project? Support me here, https://www.patreon.com/MiSTer_Organize
 
-- You should avoid full path clashes between your files and the files from other databases so that your users don't run into issues when using multiple databases at the same time.
+# Credits
+MiSTer Organize creator of MiSTer Organize.
 
-## How your users will integrate your Custom Database in their MiSTers:
+Alexey Melnikov creator of MiSTer FPGA project.
 
-Your users will just have to do the **step 4** of the "How to generate" section. So you should add those lines to your documentation replacing the placeholders with the correct GitHub user and repository name.
+All other MiSTer FPGA developers for giving us the ultimate retro gaming experience.
 
-For example, assuming GitHub user is "jose" and the repository is called "game_wallpapers", your users will have to add these lines to the bottom of `downloader.ini`:
+José Manuel Barroso Galindo for Update All script.
 
-```ini
-[jose/game_wallpapers]
-db_url = https://raw.githubusercontent.com/jose/game_wallpapers/db/db.json.zip
-```
+MiSTer Addons for giving us quality accessories for the MiSTer FPGA project.
 
-This needs to be done just once by your users. After that, whenever they run *downloader* or *update_all* they'll also be installing your updated files.
+Taki Udon for giving us affordable options for the MiSTer FPGA project.
 
-## Modifying README.md
+Lu's Retro Source for providing news about the MiSTer FPGA project.
 
-After you have your own repository based on this template, a good idea would be to edit your `README.md` describing the content of your database and how to use it. That way users will learn about your Database and will integrate it into their MiSTer's easily.
+Pixel Cherry Ninja for providing news about the MiSTer FPGA project.
 
-Feel free to remove any reference to the original template there.
+No-Intro for its database of best available ROMs and digital games.
+
+Redump for its disc preservation database.
+
+Hardware Target Game Database for archival efforts of the highest quality ROM dumps.
+
+ScreenScraper.fr for its game database.
+
+GordonJ creator of RomVault.
+
+Roman Scherzer creator of ClrMamePro.
+
+Unexpectedpanda creator of Retool.
