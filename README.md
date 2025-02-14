@@ -69,3 +69,5 @@ GordonJ creator of RomVault.
 Roman Scherzer creator of ClrMamePro.
 
 Unexpectedpanda creator of Retool.
+
+Asphodel creator of Universal ROM Sorter.
