@@ -66,7 +66,7 @@ ScreenScraper.fr for its game database.
 
 GordonJ creator of RomVault.
 
-Roman Scherzer creator of ClrMamePro.
+Roman Scherzer creator of CLRMAMEPro.
 
 Unexpectedpanda creator of Retool.
 
